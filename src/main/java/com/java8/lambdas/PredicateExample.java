@@ -8,14 +8,15 @@ import java.util.function.Predicate;
 public class PredicateExample {
     public static void main(String[] args) {
         // Call with a lambda expression
-        Predicate<Apple> applePredicate = apple -> apple.getWeight();
-        // Call with a method expression
-        applePredicate = Apple::getWeight;
+        Predicate<Apple> applePredicate = apple -> apple.getWeight() > 100;
+        // Predicate with and expression
+        applePredicate = applePredicate.and(apple -> apple.getCountry().isEmpty());
         // Negate predicate
         Predicate<Apple> negatedApplePredicate = applePredicate.negate();
     }
 
     private interface Apple {
-        boolean getWeight();
+        int getWeight();
+        String getCountry();
     }
 }
