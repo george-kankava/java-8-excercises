@@ -11,6 +11,8 @@ public class ComparatorExample {
         Comparator<Apple> appleComparator = Comparator.comparing((apple -> apple.getWeight()));
         // Method reference expression
         appleComparator = Comparator.comparing(Apple::getWeight);
+        // Comparator with reverse order
+        appleComparator = Comparator.comparing(Apple::getWeight).reversed();
     }
 
     public interface Apple {
