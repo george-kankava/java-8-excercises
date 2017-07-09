@@ -11,6 +11,7 @@ public class FunctionExample {
         Function<Integer, Integer> functionB = integer -> integer * 2;
         // Nesting functions
         Function<Integer, Integer> functionC = functionA.andThen(functionB);
+        Function<Integer, Integer> functionD = functionA.compose(functionB);
         Integer result = functionC.apply(functionC.apply(5));
         System.out.println(result);
     }
