@@ -16,6 +16,12 @@ public class StreamExample {
                     .collect(toList());
     }
 
+    public List<Integer> squareOfNumbers(List<Integer> numbers) {
+        return numbers.stream()
+                    .map(n -> n * n)
+                    .collect(toList());
+    }
+
     public List<Integer> extractDishNamesLength(List<Dish> dishes) {
         return dishes.stream()
                 .map(dish -> dish.getName())
@@ -26,7 +32,7 @@ public class StreamExample {
     public List<String> distinctLettersInWord(List<String> words) {
         return words.stream()
                 .map(word -> word.split(""))
-                .flatMap(Arrays::stream)
+                .flatMap(strings -> Arrays.stream(strings))
                 .distinct()
                 .collect(toList());
     }
