@@ -9,6 +9,12 @@ import static java.util.stream.Collectors.toList;
  */
 public class StreamExample {
 
+    public List<String> extractDishNames(List<Dish> dishes) {
+        return dishes.stream()
+                    .map(dish -> dish.getName())
+                    .collect(toList());
+    }
+
     public List<String> lowCaloricDishes(List<Dish> menu) {
         return menu.stream()
                     .filter(dish -> dish.getCalories() < 400)
