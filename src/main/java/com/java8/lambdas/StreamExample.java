@@ -3,6 +3,8 @@ package com.java8.lambdas;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
+
 import static java.util.stream.Collectors.toList;
 
 /**
@@ -14,6 +16,24 @@ public class StreamExample {
         return dishes.stream()
                     .map(dish -> dish.getName())
                     .collect(toList());
+    }
+
+    public Optional<Dish> findAnyExample(List<Dish> dishes) {
+        return dishes.stream()
+                    .filter(dish -> dish.getCalories() < 300)
+                    .findAny();
+    }
+
+    public int sumList(List<Integer> numbers) {
+        return numbers
+                .stream()
+                .reduce(0, Integer::sum);
+    }
+
+    public Integer countNumberOfDishes(List<Dish> dishes) {
+        return dishes.stream()
+                    .map(dish -> 1)
+                    .reduce(0, Integer::sum);
     }
 
     public List<Integer> squareOfNumbers(List<Integer> numbers) {
