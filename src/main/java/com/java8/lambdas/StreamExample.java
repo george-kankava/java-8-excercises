@@ -1,5 +1,6 @@
 package com.java8.lambdas;
 
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import static java.util.stream.Collectors.toList;
@@ -13,6 +14,21 @@ public class StreamExample {
         return dishes.stream()
                     .map(dish -> dish.getName())
                     .collect(toList());
+    }
+
+    public List<Integer> extractDishNamesLength(List<Dish> dishes) {
+        return dishes.stream()
+                .map(dish -> dish.getName())
+                .map(s -> s.length())
+                .collect(toList());
+    }
+
+    public List<String> distinctLettersInWord(List<String> words) {
+        return words.stream()
+                .map(word -> word.split(""))
+                .flatMap(Arrays::stream)
+                .distinct()
+                .collect(toList());
     }
 
     public List<String> lowCaloricDishes(List<Dish> menu) {
