@@ -2,7 +2,7 @@ package com.java8.lambdas;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
+import static java.util.stream.Collectors.toList;
 
 /**
  * Created by georgekankava on 10.07.17.
@@ -13,7 +13,7 @@ public class LimitDishesExample {
         return dishes.stream()
                 .filter(dish -> dish.getCalories() < calories)
                 .limit(limit)
-                .collect(Collectors.toList());
+                .collect(toList());
     }
 
     public static void main(String[] args) {
