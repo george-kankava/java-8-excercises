@@ -17,9 +17,24 @@ public class StreamExample {
     }
 
     public List<Integer> squareOfNumbers(List<Integer> numbers) {
+        List<Integer> numbers1 = Arrays.asList(1, 2, 3);
+        List<Integer> numbers2 = Arrays.asList(3, 4);
+        List<int[]> pairs =
+                numbers1.stream()
+                        .flatMap(i -> numbers2.stream()
+                                .filter(integer -> i + integer %3 == 0)
+                                .map(j -> new int[]{i, j})
+                        )
+                        .collect(toList());
         return numbers.stream()
                     .map(n -> n * n)
                     .collect(toList());
+    }
+
+    public void anyMatchExample(List<Dish> menu) {
+        if(menu.stream().anyMatch(dish -> dish.isVegetarian())) {
+            System.out.println("Menu has vegetarion food.");
+        }
     }
 
     public List<Integer> extractDishNamesLength(List<Dish> dishes) {
@@ -59,5 +74,6 @@ public class StreamExample {
     public interface Dish {
         int getCalories();
         String getName();
+        boolean isVegetarian();
     }
 }
