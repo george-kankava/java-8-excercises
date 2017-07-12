@@ -20,6 +20,13 @@ import static java.util.stream.Collectors.toList;
  */
 public class TransactionStreamExample {
 
+    public Transaction findTransactionsSmallesValue(List<Transaction> transactions) {
+        return transactions
+                .stream()
+                .min(Comparator.comparing(Transaction::getValue))
+                .get();
+    }
+
     public int getMaxTransactionsValue(List<Transaction> transactions) {
         return transactions
                 .stream()
