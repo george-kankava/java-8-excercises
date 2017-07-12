@@ -7,7 +7,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.util.Arrays;
-import java.util.Comparator;
+import static java.util.Comparator.comparing;
 import java.util.List;
 import static java.util.stream.Collectors.toList;
 
@@ -19,9 +19,27 @@ public class TransactionStreamExample {
     public List<Transaction> findAllTransactionsWithYear(List<Transaction> transactions, int year) {
         return transactions.stream()
                 .filter(transaction -> transaction.getYear() == 2011)
-                .sorted(Comparator.comparing(Transaction::getValue))
+                .sorted(comparing(Transaction::getValue))
                 .collect(toList());
 
+    }
+
+    public List<String> getTranderUniqueCities(List<Transaction> transactions) {
+        return transactions
+                .stream()
+                .map(transaction -> transaction.getTrader().getCity())
+                .distinct()
+                .collect(toList());
+    }
+
+    public List<Trader> findTradersByCity(List<Transaction> transactions, String city) {
+        return transactions
+                .stream()
+                .map(Transaction::getTrader)
+                .filter(trader -> trader.getCity().equals(city))
+                .distinct()
+                .sorted(comparing(Trader::getName))
+                .collect(toList());
     }
 
 
