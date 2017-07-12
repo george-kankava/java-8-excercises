@@ -8,6 +8,8 @@ import lombok.ToString;
 
 import java.util.Arrays;
 import static java.util.Comparator.comparing;
+
+import java.util.Comparator;
 import java.util.List;
 import static java.util.stream.Collectors.toList;
 
@@ -16,9 +18,17 @@ import static java.util.stream.Collectors.toList;
  */
 public class TransactionStreamExample {
 
+    public String getTranderNames(List<Transaction> transactions) {
+        return transactions
+                .stream()
+                .map(transaction -> transaction.getTrader().getName())
+                .sorted()
+                .reduce("", (n1, n2) -> n1 + n2);
+    }
+
     public List<Transaction> findAllTransactionsWithYear(List<Transaction> transactions, int year) {
         return transactions.stream()
-                .filter(transaction -> transaction.getYear() == 2011)
+                .filter(transaction -> transaction.getYear() == year)
                 .sorted(comparing(Transaction::getValue))
                 .collect(toList());
 
