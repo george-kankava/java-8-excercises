@@ -21,6 +21,12 @@ import static java.util.stream.Collectors.toList;
  */
 public class TransactionStreamExample {
 
+    public void generateExample() {
+        Stream.generate(Math::random)
+                .limit(5)
+                .forEach(System.out::println);
+    }
+
     public void streamFromArrays() {
         int arr [] = {1, 2, 3, 4, 5};
         Arrays.stream(arr).sum();
