@@ -11,6 +11,8 @@ import static java.util.Comparator.comparing;
 
 import java.util.Comparator;
 import java.util.List;
+
+import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 
 /**
@@ -23,7 +25,7 @@ public class TransactionStreamExample {
                 .stream()
                 .map(transaction -> transaction.getTrader().getName())
                 .sorted()
-                .reduce("", (n1, n2) -> n1 + n2);
+                .collect(joining());
     }
 
     public List<Transaction> findAllTransactionsWithYear(List<Transaction> transactions, int year) {
