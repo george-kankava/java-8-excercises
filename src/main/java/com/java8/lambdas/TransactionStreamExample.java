@@ -20,6 +20,23 @@ import static java.util.stream.Collectors.toList;
  */
 public class TransactionStreamExample {
 
+    public int getMaxTransactionsValue(List<Transaction> transactions) {
+        return transactions
+                .stream()
+                .map(transaction -> transaction.getValue())
+                .reduce(Integer::max)
+                .get();
+    }
+
+    public boolean anyMatchTraderInCity(List<Transaction> transactions, String city) {
+        return transactions
+                .stream()
+                .anyMatch(transaction -> transaction
+                        .getTrader()
+                        .getCity()
+                        .equals(city));
+    }
+
     public String getTranderNames(List<Transaction> transactions) {
         return transactions
                 .stream()
