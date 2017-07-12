@@ -11,6 +11,7 @@ import static java.util.Comparator.comparing;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
@@ -19,6 +20,21 @@ import static java.util.stream.Collectors.toList;
  * Created by georgekankava on 11.07.17.
  */
 public class TransactionStreamExample {
+
+    public void streamFromArrays() {
+        int arr [] = {1, 2, 3, 4, 5};
+        Arrays.stream(arr).sum();
+    }
+
+    public Stream getEmptyStream() {
+        return Stream.empty();
+    }
+
+    public void streamOfExample() {
+        Stream.of("Java", "8", "Programming")
+                .map(String::toUpperCase)
+                .forEach(System.out::println);
+    }
 
     public Transaction findTransactionsSmallesValue(List<Transaction> transactions) {
         return transactions
