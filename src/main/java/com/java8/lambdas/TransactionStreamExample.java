@@ -66,12 +66,16 @@ public class TransactionStreamExample {
                         .equals(city));
     }
 
-    public String getTranderNames(List<Transaction> transactions) {
+    public static String getTranderNames(List<Transaction> transactions) {
         return transactions
                 .stream()
                 .map(transaction -> transaction.getTrader().getName())
                 .sorted()
-                .collect(joining());
+                .collect(joining(", "));
+    }
+
+    public static void main(String[] args) {
+        System.out.println(getTranderNames(transactions));
     }
 
     public List<Transaction> findAllTransactionsWithYear(List<Transaction> transactions, int year) {
@@ -101,11 +105,11 @@ public class TransactionStreamExample {
     }
 
 
-    Trader raoul = new Trader("Raoul", "Cambridge");
-    Trader mario = new Trader("Mario","Milan");
-    Trader alan = new Trader("Alan","Cambridge");
-    Trader brian = new Trader("Brian","Cambridge");
-    List<Transaction> transactions = Arrays.asList(
+    static Trader raoul = new Trader("Raoul", "Cambridge");
+    static Trader mario = new Trader("Mario","Milan");
+    static Trader alan = new Trader("Alan","Cambridge");
+    static Trader brian = new Trader("Brian","Cambridge");
+    static public List<Transaction> transactions = Arrays.asList(
             new Transaction(brian, 2011, 300),
             new Transaction(raoul, 2012, 1000),
             new Transaction(raoul, 2011, 400),
@@ -118,7 +122,7 @@ public class TransactionStreamExample {
     @Setter
     @AllArgsConstructor
     @ToString
-    public class Trader {
+    public static class Trader {
         private final String name;
         private final String city;
     }
@@ -127,7 +131,7 @@ public class TransactionStreamExample {
     @Setter
     @AllArgsConstructor
     @ToString
-    public class Transaction {
+    public static class Transaction {
         private final Trader trader;
         private final int year;
         private final int value;
