@@ -12,6 +12,13 @@ import static java.util.stream.Collectors.toList;
  */
 public class StreamExample {
 
+    public void higitestCaloricDish(List<Dish> dishes) {
+        dishes
+                .stream()
+                .map(Dish::getCalories)
+                .reduce(Integer::max);
+    }
+
     public List<String> extractDishNames(List<Dish> dishes) {
         return dishes.stream()
                     .map(dish -> dish.getName())
