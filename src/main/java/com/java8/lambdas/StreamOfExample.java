@@ -29,7 +29,7 @@ public class StreamOfExample {
                 .of(3, 2, 4, 0, 9, 8, 12, 83, 120)
                 .boxed()
                 .map(operand -> new Dish(operand))
-                .sorted(Comparator.comparing( Dish::getCalories))
+                .sorted(Comparator.comparing( Dish::getCalories).reversed())
                 .collect(Collectors.toList());
         System.out.println(dishList);
     }
