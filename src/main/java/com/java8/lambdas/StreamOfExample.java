@@ -3,7 +3,11 @@ package com.java8.lambdas;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.OptionalInt;
 import java.util.stream.Collectors;
@@ -25,12 +29,15 @@ public class StreamOfExample {
                 .of(3, 2, 4, 0, 9, 8, 12, 83, 120)
                 .boxed()
                 .map(operand -> new Dish(operand))
+                .sorted(Comparator.comparing( Dish::getCalories))
                 .collect(Collectors.toList());
+        System.out.println(dishList);
     }
 
     @Getter
     @Setter
     @AllArgsConstructor
+    @ToString
     private static class Dish {
         private int calories;
     }
