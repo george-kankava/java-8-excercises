@@ -16,7 +16,7 @@ public class PrimitiveStreamsExample {
                 .sum();
     }
 
-    public void convertToNonspecializedStream(List<Dish> dishes) {
+    public void convertToNonSpecializedStream(List<Dish> dishes) {
         Stream<Integer> boxed = dishes
                 .stream()
                 .mapToInt(value -> value.getCalories())
