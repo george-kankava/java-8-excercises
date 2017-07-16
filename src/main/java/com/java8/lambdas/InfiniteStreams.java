@@ -9,10 +9,13 @@ public class InfiniteStreams {
     public static void main(String[] args) {
         Stream
                 .iterate(1, integer -> integer)
+                .limit(10)
                 .forEach(System.out::println);
 
         Stream
-                .generate(Math::random);
+                .generate(Math::random)
+                .limit(10)
+                .forEach(System.out::println);
 
     }
 }
