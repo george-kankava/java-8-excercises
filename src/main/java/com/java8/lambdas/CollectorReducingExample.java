@@ -32,6 +32,15 @@ public class CollectorReducingExample {
                 ).collect(Collectors.reducing(0, Dish::getCalories, Integer::max));
         System.out.println(max);
 
+        IntStream
+                .range(1, 100)
+                .collect(() -> 1, (integer, value) -> {}, (integer, integer2) -> {});
+
+        Optional<String> collect = Stream
+                .of("1", "2", "3", "4", "5")
+                .collect(Collectors.reducing((o, o2) -> o + ", " + o2));
+        System.out.println(collect.get());
+
     }
 
     @Getter
