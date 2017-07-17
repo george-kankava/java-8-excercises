@@ -1,5 +1,10 @@
 package com.java8.lambdas;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -17,5 +22,23 @@ public class CollectorReducingExample {
         Stream
                 .of(1, 21)
                 .collect(Collectors.reducing(0, (o, o2) -> Integer.max(o, o2)));
+
+        Integer max = Stream
+                .of(
+                        new Dish(2),
+                        new Dish(4),
+                        new Dish(6),
+                        new Dish(8)
+                ).collect(Collectors.reducing(0, Dish::getCalories, Integer::max));
+        System.out.println(max);
+
+    }
+
+    @Getter
+    @Setter
+    @ToString
+    @AllArgsConstructor
+    private static class Dish {
+        private int calories;
     }
 }
