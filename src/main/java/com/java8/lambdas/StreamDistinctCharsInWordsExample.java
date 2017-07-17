@@ -12,7 +12,6 @@ public class StreamDistinctCharsInWordsExample {
                 .of("Hello", "There", "What", "Are" ,"You", "Up", "To")
                 .map(s -> s.split(""))
                 .flatMap(Arrays::stream)
-                .distinct()
                 .forEach(System.out::print);
     }
 }
