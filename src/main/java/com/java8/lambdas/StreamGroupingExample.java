@@ -25,6 +25,13 @@ public class StreamGroupingExample {
                 .collect(Collectors.groupingBy(Data::getId, Collectors.counting()));
         System.out.println(collect);
 
+        stream = Stream.of(
+                new Data(1, "1"),
+                new Data(2, "2"),
+                new Data(2, "2"),
+                new Data(3, "3"));
+        Map<Integer, List<Data>> collect1 = stream.collect(Collectors.groupingBy(Data::getId));
+        System.out.println(collect1);
     }
 
     @Getter
