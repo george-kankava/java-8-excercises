@@ -16,6 +16,6 @@ public class CollectorReducingExample {
 
         Stream
                 .of(1, 21)
-                .collect(Collectors.reducing((o, o2) -> Integer.max(o, o2)));
+                .collect(Collectors.reducing(0, (o, o2) -> Integer.max(o, o2)));
     }
 }
