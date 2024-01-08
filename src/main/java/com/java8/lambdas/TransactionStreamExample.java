@@ -1,6 +1,5 @@
 package com.java8.lambdas;
 
-import com.sun.java.accessibility.util.Translator;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
