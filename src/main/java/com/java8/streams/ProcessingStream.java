@@ -38,8 +38,7 @@ public class ProcessingStream {
         System.getenv();
         System.setProperty("java.util.concurrent.ForkJoinPool.common.parallelism", "12");
 
-
-        System.out.println("number of processors : " + Runtime.getRuntime().availableProcessors());
+        // removed sout test2 branch
 
         long start = System.currentTimeMillis();
 
