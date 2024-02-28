@@ -39,8 +39,6 @@ public class ProcessingStream {
         System.setProperty("java.util.concurrent.ForkJoinPool.common.parallelism", "12");
 
 
-        // removed sout test-1
-
         long start = System.currentTimeMillis();
 
         Long longSum = LongStream.rangeClosed(0, 100)
