@@ -17,7 +17,7 @@ public class FIlterEvenNumbers {
         List<Integer> dishes = numbers.stream()
                 .filter(d -> d > 4)
                 .skip(2)
-                .collect(toList());
+                .toList();
 
     }
 }

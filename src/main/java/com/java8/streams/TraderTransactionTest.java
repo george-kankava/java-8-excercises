@@ -1,5 +1,7 @@
 package com.java8.streams;
 
+import lombok.Getter;
+
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
@@ -41,7 +43,7 @@ public class TraderTransactionTest {
         Stream.of(raoul, mario, alan, brian)
                 .map(Trader::getCity)
                 .distinct()
-                .collect(Collectors.toList());
+                .toList();
 
         transactions.stream()
                 .map(t -> t.getTrader())
@@ -111,6 +113,7 @@ public class TraderTransactionTest {
         }
     }
 
+    @Getter
     public static class Transaction {
         private final Trader trader;
         private final int year;
@@ -120,18 +123,6 @@ public class TraderTransactionTest {
             this.trader = trader;
             this.year = year;
             this.value = value;
-        }
-
-        public Trader getTrader() {
-            return trader;
-        }
-
-        public int getYear() {
-            return year;
-        }
-
-        public int getValue() {
-            return value;
         }
 
         @Override
